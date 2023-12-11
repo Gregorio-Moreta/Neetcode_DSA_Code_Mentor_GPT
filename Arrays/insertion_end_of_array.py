@@ -9,11 +9,12 @@ def insertEnd(arr, n, length, capacity):
 
 arr = [1,2,3,4,5]
 
-# print(insertEnd(arr, 6, 5, 10)) # [1,2,3,4,5,6]
+print('without append ', insertEnd(arr, 6, 5, 10)) # [1,2,3,4,5,6]
 
 
 
-# Alternate explanation
+# Alternate explanation for original code above
+
 # The error message IndexError: list assignment index out of range in Python indicates that you're trying to access or modify an element in a list (arr in your case) at an index that doesn't exist.
 
 # Here's what's happening in your code:
@@ -37,4 +38,4 @@ def insertEnd(arr, n, length, capacity):
 insertEnd(arr, 6, len(arr), 10)
 
 # Print the modified array
-print(arr)  # Expected output: [1, 2, 3, 4, 5, 6]
+print('with append ', arr)  # Expected output: [1, 2, 3, 4, 5, 6]
