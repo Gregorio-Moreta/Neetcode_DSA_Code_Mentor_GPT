@@ -1,6 +1,10 @@
 # Insert n into arr at the next open position.
 # Length is the number of 'real' values in arr, and capacity
 # is the size (aka memory allocated for the fixed size array).
+
+# Ah, I see the problem. In Python, when you try to insert an element into a list at an index that doesn't exist yet, you'll get an IndexError. Unlike some other languages, Python lists don't automatically expand to accommodate new elements at arbitrary indices.
+
+
 def insertEnd(arr, n, length, capacity):
     if length < capacity:
         # used the length - 1 technique to target the final element of an array
@@ -12,8 +16,24 @@ arr = [1,2,3,4,5]
 print('without append ', insertEnd(arr, 6, 5, 10)) # [1,2,3,4,5,6]
 
 
+# Alternate example # 1
+# Since you're working with a fixed-size array (as indicated by the capacity parameter), one solution is to initialize your array with None (or some other placeholder) to fill up the remaining capacity. This way, the indices up to capacity - 1 will already exist, and you can safely assign new elements to them.
 
-# Alternate explanation for original code above
+# Here's how you can modify both the initialization of your array and the insertEnd function:
+
+def insertEnd(arr, n, length, capacity):
+    if length < capacity:
+        arr[length] = n
+        return arr
+
+# Initialize the array with 'None' to fill up the capacity
+arr = [1, 2, 3, 4, 5] + [None] * (10 - 5)  # Assuming capacity is 10
+
+print('with append', insertEnd(arr, 6, 5, 10))  # Expected output: [1, 2, 3, 4, 5, 6, None, None, None, None]
+
+# This approach sets up your array with placeholders (None in this case), and your insertEnd function can then safely insert new elements up to the defined capacity.
+
+# Alternate explanation # 2 for original code above
 
 # The error message IndexError: list assignment index out of range in Python indicates that you're trying to access or modify an element in a list (arr in your case) at an index that doesn't exist.
 
